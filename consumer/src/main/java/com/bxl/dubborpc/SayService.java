@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SayService {
 
-    //@Reference   //使用自动扫描包的方式
-    @Autowired   //使用xml的时候需要使用Autowired
+    //@Autowired   //使用xml的时候需要使用Autowired
+    @Reference   //使用自动扫描包的方式
     SayHello sayHello;
 
     public String say (String name) {

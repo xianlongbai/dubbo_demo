@@ -6,7 +6,7 @@ import com.bxl.service.SayHello;
 /**
  * Created by root on 2019/4/9.
  */
-//@Service   //如果使用xml配置,则不需要加注解
+@Service   //如果使用xml配置,则不需要加注解
 public class SayHelloImpl implements SayHello {
 
     @Override

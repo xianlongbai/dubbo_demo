@@ -8,13 +8,16 @@
     <!-- 应用配置，不要与提供方相同 -->
     <dubbo:application name="springboot-dubbo-consumer"/>
 
+    <!-- 协议配置，用于配置提供服务的协议信息，协议由提供方指定，支持dubbo, http, local三种协议, 消费方被动接受 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
     <!-- 注册中心配置，使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="60000" />
+    <dubbo:registry id="dubbo-2.5.3" address="zookeeper://127.0.0.1:2181" timeout="60000" group="dev" />
 
     <!-- 使用注解方式创建远程服务代理-->
-    <!--<dubbo:annotation package="com.bxl.dubborpc"/>-->
+    <dubbo:annotation package="com.bxl.dubborpc"/>
     <!--声明服务引用，与服务声明接口类型一致-->
-    <dubbo:reference interface="com.bxl.service.SayHello" id="sayHello"/>
+    <!--<dubbo:reference interface="com.bxl.service.SayHello" id="sayHello"/>-->
 
 
 </beans>

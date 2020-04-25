@@ -8,16 +8,19 @@
     <!-- 应用配置，不要与提供方相同 -->
     <dubbo:application name="springboot-dubbo-provider"/>
 
+    <!-- 协议配置，用于配置提供服务的协议信息，协议由提供方指定，支持dubbo, http, local三种协议, 消费方被动接受 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
     <!-- 注册中心配置，使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" timeout="60000" />
+    <dubbo:registry id="dubbo-2.5.3" address="zookeeper://127.0.0.1:2181" timeout="60000" group="dev" />
 
     <!--关闭服务消费方所有服务的启动检查。dubbo缺省会在启动时检查依赖的服务是否可用，不可用时会抛出异常，阻止Spring初始化完成。-->
     <dubbo:consumer check="false" />
 
     <!-- 使用注解方式暴露接口，会自动扫描package下所有包中dubbo相关的注解，这样就不用在xml中再针对每个服务接口配置dubbo:service interface-->
     <!--com.bxl.controller-->
-    <!--<dubbo:annotation package="com.bxl.service" />-->
+    <dubbo:annotation package="com.bxl.service" />
 
-    <dubbo:service interface="com.bxl.service.SayHello" ref="SayHelloImpl"/>
-    <bean id="SayHelloImpl" class="com.bxl.service.impl.SayHelloImpl"/>
+    <!--<dubbo:service interface="com.bxl.service.SayHello" ref="SayHelloImpl"/>-->
+    <!--<bean id="SayHelloImpl" class="com.bxl.service.impl.SayHelloImpl"/>-->
 </beans>
